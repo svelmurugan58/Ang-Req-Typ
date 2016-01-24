@@ -1,0 +1,20 @@
+.wrapr{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+body { 
+  padding-top: 60px; 
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.timeSave{
+    margin-top: 24px;
+}
+
+.error{
+  border: solid 1px red;
+}

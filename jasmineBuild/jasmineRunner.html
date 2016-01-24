@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Jasmine test case runner for AngularSeedV2.0</title>
+		<link rel="stylesheet" href="../vendor/styles/jasmine/jasmine.css" />
+		<!-- Hide the toastr notifications -->
+		<style>
+			div#toast-container {
+				display: none
+			}
+		</style>
+	</head>
+	<body>
+		<script src="../vendor/js/jasmine/jasmine.js"></script>
+		<script src="../vendor/js/jasmine/jasmine-html.js"></script>
+		<script src="../vendor/js/requirejs/require.min.js" data-main="jasmineRequireConfig"></script>
+		<script type="text/javascript">
+			console.log('Initializing jasmineEnv');
+			var jasmineEnv = jasmine.getEnv();
+			jasmineEnv.updateInterval = 1000;
+			//Setup the reporter
+			var htmlReporter = new jasmine.HtmlReporter();
+			jasmineEnv.addReporter(htmlReporter);
+			jasmineEnv.specFilter = function (spec) {
+				return htmlReporter.specFilter(spec);
+			};
+			console.log('Executing jasmine test cases');
+			require(['./allUnitSpecs.js'], function (specs) {
+				require(specs, function (spec) {
+					jasmineEnv.execute();
+				});
+			});
+		</script>
+	</body>
+
+</html>
